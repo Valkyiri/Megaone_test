@@ -1,0 +1,11 @@
+:root {
+    --primary-color: #ffd700; /* Gold-like color for logo and accents */
+    --text-dark-color: #333;
+    --text-light-color: #fff;
+    --background-dark-color: #000;
+    --background-light-color: #f8f8f8;
+    --button-bg-color: #444;
+    --button-text-color: #fff;
+    --header-bg-color: rgba(0, 0, 0, 0.0); /* Semi-transparent for header */
+    --nav-bg-color: rgba(0, 0, 0, 0); /* Semi-transparent for navigation */
+}

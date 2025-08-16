@@ -1,0 +1,278 @@
+/* General Body Styles */
+
+body {
+    margin: 0;
+    font-family: "source-sans-pro", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-light-color);
+    background-color: var(--background-dark-color);
+    overflow-x: hidden;
+    /* REMOVED: overflow-y: hidden; - Generally not recommended for body as it prevents scrolling */
+    /* Prevent horizontal scroll */
+}
+
+/* Hero Section - Full Viewport Video Background */
+.hero-section {
+    height: 100vh;
+    /* Takes the full viewport height */
+    width: 100vw;
+    /* Added for clarity that it covers full width too */
+    display: flex;
+    /* For centering hero-content */
+    flex-direction: column;
+    justify-content: center;
+    /* Center hero-content vertically */
+    align-items: center;
+    /* Center hero-content horizontally */
+    text-align: center;
+    position: relative;
+    /* CRITICAL: Establishes a positioning context for its absolute children (video, overlay, content) */
+    overflow: hidden;
+    /* Ensures video doesn't overflow */
+}
+
+/* Video Background Styling */
+#backgroundVideo {
+    position: absolute;
+    /* CRITICAL: Takes video out of normal document flow */
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    /* Ensure it covers at least 100% width of its parent */
+    min-height: 100%;
+    /* Ensure it covers at least 100% height of its parent */
+    width: auto;
+    /* Allow natural width scaling */
+    height: auto;
+    /* Allow natural height scaling */
+    z-index: -2;
+    /* CRITICAL: Place behind overlay and content */
+    transform: translate(-50%, -50%);
+    /* CRITICAL: Center the video */
+    object-fit: cover;
+    /* CRITICAL: Ensures video covers the entire container, cropping if necessary */
+    /* filter: brightness(0.7); */
+    /* Slightly darken the video itself for better text contrast */
+}
+
+/* Video Overlay for better text readability */
+.video-overlay {
+    position: absolute;
+    /* CRITICAL: Takes overlay out of normal document flow */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Dark overlay over the video */
+    z-index: -1;
+    /* CRITICAL: Behind content, but above video */
+}
+
+/* Header Styles */
+.main-header {
+    position: absolute;
+    /* CRITICAL: Positions relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Keeps social icons left */
+    align-items: center;
+    padding: 15px 20px 15px 40px; /* MODIFIED: Explicit padding for top, right, bottom, left. Increased left, decreased right for better fit. */
+    box-sizing: border-box; /* ADDED: Ensures padding is included in the element's total width */
+    background-color: var(--header-bg-color);
+    z-index: 10;
+    /* CRITICAL: Ensure header is on top of everything */
+}
+
+.header-social-icons a {
+    color: var(--text-light-color);
+    margin-right: 15px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.header-social-icons a:hover {
+    color: var(--primary-color);
+}
+
+.header-contact {
+    color: var(--text-light-color);
+    font-size: 16px;
+    margin-left: auto; /* Pushes this element (and the menu button) to the far right */
+}
+
+.header-contact i {
+    margin-right: 8px;
+}
+.header-contact .contact-button {
+    background: transparent;
+    color: var(--text-light-color);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 8px 15px; /* Adjusted button padding for better appearance */
+    white-space: nowrap; /* Ensures text stays on one line */
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    color: var(--text-light-color);
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    /* Hide by default, show on smaller screens if needed */
+    margin-left: 15px; /* Small margin for separation when visible next to contact */
+}
+
+/* Hero Content Styles */
+.hero-content {
+    max-width: 700px;
+    padding: 20px;
+    /* Removed background-color here as the video-overlay handles the darkening */
+    border-radius: 8px;
+    position: relative;
+    /* CRITICAL: Ensures content is above the overlay */
+    z-index: 1;
+    /* CRITICAL: Place hero content above the video and overlay */
+}
+
+.hero-logo {
+    font-size: 80px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.hero-title {
+    font-size: 4em;
+    /* Adjust as needed */
+    margin-bottom: 15px;
+    color: var(--text-light-color);
+}
+
+.hero-description {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: var(--text-light-color);
+}
+
+.learn-more-button {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--button-text-color);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+    border: 2px solid white;
+}
+
+.learn-more-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Main Navigation Styles */
+.main-navigation {
+    position: absolute;
+    /* CRITICAL: Positions relative to the viewport */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--nav-bg-color);
+    padding: 15px 0;
+    z-index: 10;
+    /* CRITICAL: Ensure navigation is on top of everything */
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    /* Space between nav items */
+}
+
+.nav-item .nav-link {
+    color: var(--text-light-color);
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 1.1em;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-item .nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Additional Content (below viewport) */
+.additional-content {
+    padding: 50px 20px;
+    text-align: center;
+    color: var(--text-dark-color);
+    /* Dark text for contrast on light background */
+    background-color: var(--background-light-color);
+}
+
+/* Basic Responsiveness (Optional, but good practice) */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+
+    .header-social-icons {
+        margin-bottom: 10px;
+    }
+
+    .header-contact {
+        margin-bottom: 10px;
+    }
+
+    .menu-button {
+        display: block;
+        /* Show menu button on smaller screens */
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
+
+    .main-navigation {
+        display: none;
+        /* Hide nav by default, show with JS toggle */
+        position: static;
+        /* Remove absolute positioning */
+        background-color: var(--nav-bg-color);
+        padding: 10px 0;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-size: 2.5em;
+    }
+
+    .hero-logo {
+        font-size: 60px;
+    }
+
+    .hero-description {
+        font-size: 1em;
+    }
+}
